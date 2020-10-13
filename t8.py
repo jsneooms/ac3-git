@@ -7,24 +7,19 @@ app = Flask(__name__)
 @app.route('/')
 def nao_entre_em_panico():
 
- limite = 1000
- numero = 2
- c = 1
- p = 0
- print "Primos: ",
- while numero < 1000:
-     i = numero -1
-     while i > 1:
-         if numero % i == 0: break
-           i -= 1
-           c += 1
-     else:
-        print numero,
-         p += 1
-     numero += 1
- 
-print "\n\nForam encontrados %d números primos." %p
-print "Foram necessárias %d comparações." %c
+x, mult = 2.0 
+n = 100
+lista = [] 
+while (x<n):
+    if (n % x == 0):
+        lista.append(x)
+        mult +=1
+    x+=1
+    else:
+        if(mult==0):
+            print("É primo")
+        else:
+            print(n"Não é primo e seus divisores não:", lista)
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
