@@ -7,19 +7,28 @@ app = Flask(__name__)
 @app.route('/')
 def nao_entre_em_panico():
 
-x, mult = 2.0 
-n = 100
-lista = [] 
-while (x<n):
-    if (n % x == 0):
-        lista.append(x)
-        mult +=1
-    x+=1
-    else:
-        if(mult==0):
-            print("É primo")
-        else:
-            print(n"Não é primo e seus divisores não:", lista)
+lista_numeros = [x for x in range(101)]
+
+lista_primos = list()
+
+lista_divisores = [x for x in lista_numeros if x != 0]
+
+for number in lista_numeros: 
+
+    soma_divisores = 0 
+
+    for divisor in lista_divisores:
+
+        if number % divisor == 0: 
+            soma_divisores += 1
+        
+        elif number < divisor:
+            break
+
+    if soma_divisores == 2: 
+        lista_primos.append(number)
+
+print(lista_primos)
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
