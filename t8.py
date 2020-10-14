@@ -18,7 +18,7 @@ def primos():
     c = 0
     n = 2
     resultado = ""
-    while c < q:
+    while c <= q:
         if ehPrimo(n):
             c += 1
             resultado = resultado + str(n) + ", "
