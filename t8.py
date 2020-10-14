@@ -1,17 +1,29 @@
 import os
 from flask import Flask, jsonify, request
-from math import sqrt
 
 app = Flask(__name__)
 
-@app.route('/')
-def nao_entre_em_panico():
+def ehDivisivel(n, d):
+    return n % d == 0
 
+def ehPrimo(n):
+    for d in range(2, n):
+        if (ehDivisivel(n, d)):
+            return False
+    return True
 
-    primos = "Oi, aqui é o Reinaldo Souza"
-
-
-    return primos
+@app.route("/")
+def primos():
+    q = 100
+    c = 0
+    n = 2
+    resultado = ""
+    while c < q:
+        if ehPrimo(n):
+            c += 1
+            resultado = resultado + str(n) + ", "
+        n += 1
+    return resultado
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
